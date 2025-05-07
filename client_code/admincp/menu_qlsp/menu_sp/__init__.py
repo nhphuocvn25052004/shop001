@@ -18,3 +18,7 @@ class menu_sp(menu_spTemplate):
     popup = add_danhmuc.add_danhmuc()
     alert(popup,title="thêm danh mục", large=True, buttons=[])
     pass
+
+  def home_click(self, **event_args):
+    open_form('index')
+    pass

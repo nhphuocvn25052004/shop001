@@ -1,7 +1,20 @@
 components:
-- layout_properties: {grid_position: 'EUMOCJ,VMMSNM'}
-  name: primary_color_1
-  properties: {role: primary-color, text: primary_color_1}
-  type: Button
+- components:
+  - layout_properties: {grid_position: 'YCXKYS,BWUOBY'}
+    name: headline_1
+    properties: {role: headline, text: Tên danh muc}
+    type: Label
+  - layout_properties: {grid_position: 'YCXKYS,STDGCA LIDPMU,MCUYIV'}
+    name: text_box_1
+    properties: {}
+    type: TextBox
+  - layout_properties: {grid_position: 'LLBYBO,LKAKXZ'}
+    name: chapnhan
+    properties: {role: primary-color, text: chấp nhận}
+    type: Button
+  layout_properties: {full_width_row: true, grid_position: 'UKVKQX,GKHLHC'}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
 container: {type: ColumnPanel}
 is_package: true

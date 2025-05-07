@@ -1,10 +1,9 @@
 from ._anvil_designer import indexTemplate
 from anvil import *
 
-
 class index(indexTemplate):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
+  def sanpham_click(self, **event_args):
+    open_form('admincp.menu_qlsp.menu_sp')

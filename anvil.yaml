@@ -10,5 +10,5 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
-startup: {module: admincp.menu_qlsp.menu_sp, type: form}
+startup: {module: index, type: form}
 startup_form: null
