@@ -1,5 +1,9 @@
 from ._anvil_designer import indexTemplate
 from anvil import *
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
+import anvil.users
 
 class index(indexTemplate):
   def __init__(self, logged_in=False, **properties):

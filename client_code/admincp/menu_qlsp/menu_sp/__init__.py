@@ -1,5 +1,9 @@
 from ._anvil_designer import menu_spTemplate
 from anvil import *
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
+import anvil.users
 
 class menu_sp(menu_spTemplate):
   def __init__(self, **properties):
