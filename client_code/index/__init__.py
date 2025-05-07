@@ -2,16 +2,16 @@ from ._anvil_designer import indexTemplate
 from anvil import *
 
 class index(indexTemplate):
-  def __init__(self, **properties):
+  def __init__(self, logged_in=False, **properties):
     self.init_components(**properties)
-    # Ẩn nút SẢN PHẨM và BÁN HÀNG khi mở trang
-    self.sanpham.visible = False
-    self.banhang.visible = False
+
+    # Hiện hoặc ẩn nút theo trạng thái đăng nhập
+    self.sanpham.visible = logged_in
+    self.banhang.visible = logged_in
+
   def sanpham_click(self, **event_args):
     open_form('admincp.menu_qlsp.menu_sp')
 
   def dangnhap_click(self, **event_args):
-    # Sau khi nhấn đăng nhập, hiển thị 2 nút chức năng
-    self.sanpham.visible = True
-    self.banhang.visible = True
-    pass
+    # Mô phỏng đăng nhập thành công: mở lại index với logged_in=True
+    open_form('index', logged_in=True)
