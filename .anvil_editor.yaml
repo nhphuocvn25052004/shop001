@@ -1,9 +1,18 @@
 unique_ids:
   assets:
+    anh-mo-ta.jfif: '1746604528160478831229669.6997'
     standard-page.html: J2VL32T5GNOEAHMQ46MUKOULSGLVDJEZ
     theme.css: WTVL567DKAWGETEZRE2PAFB4DPA6J4OX
   forms:
-    Form1: 6ZCGRPIIL7M24VW4JW6RUTFZBWCHI3OV
-  modules: {}
+    admincp.Form1: '1746602485585132597057398.96599'
+    admincp.menu_qlsp.menu_sp: '1746603176750591275088184.6597'
+    admincp.menu_qlsp.menu_sp.ItemTemplate1: '1746603438186443331069901.2477'
+    admincp.menu_qlsp.menu_sp.add_danhmuc: '1746606773297439520407896.71185'
+    admincp.menu_qlsp.menu_sp.add_sp: '1746605334560106736394096.63904'
+    index: 6ZCGRPIIL7M24VW4JW6RUTFZBWCHI3OV
+  modules:
+    admincp: '174660243527448960045465.76316'
+    admincp.menu_qlbh: '1746602787467131873837961.51741'
+    admincp.menu_qlsp: '1746602739365589716505797.8936'
   scripts: {}
   server_modules: {}

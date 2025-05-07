@@ -1,0 +1,7 @@
+components:
+- layout_properties: {grid_position: 'EUMOCJ,VMMSNM'}
+  name: primary_color_1
+  properties: {role: primary-color, text: primary_color_1}
+  type: Button
+container: {type: ColumnPanel}
+is_package: true
