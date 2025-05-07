@@ -7,3 +7,7 @@ class index(indexTemplate):
 
   def sanpham_click(self, **event_args):
     open_form('admincp.menu_qlsp.menu_sp')
+
+  def dangnhap_click(self, **event_args):
+    
+    pass
