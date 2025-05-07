@@ -14,5 +14,5 @@ class dangky(dangkyTemplate):
     # Any code you write here will run before the form opens.
 
   def dangnhap_click(self, **event_args):
-    # anvil.users.get_user()
+    anvil.users.login_with_form()
     pass
