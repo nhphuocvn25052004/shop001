@@ -22,3 +22,7 @@ class menu_sp(menu_spTemplate):
   def home_click(self, **event_args):
     open_form('index')
     pass
+
+  def dangxuat_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

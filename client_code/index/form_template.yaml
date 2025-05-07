@@ -20,7 +20,7 @@ components:
     properties: {foreground: 'theme:White', text: sản phẩm}
     type: Button
   - layout_properties: {grid_position: 'PZSFVK,DJXHOX'}
-    name: button_2
+    name: banhang
     properties: {foreground: 'theme:White', text: bán hàng}
     type: Button
   layout_properties: {slot: title}
