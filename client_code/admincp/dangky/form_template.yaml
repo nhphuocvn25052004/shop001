@@ -1,3 +1,19 @@
-components: []
-container: {type: ColumnPanel}
+components:
+- layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- components:
+  - event_bindings: {click: dangnhap_click}
+    layout_properties: {}
+    name: dangnhap
+    properties: {foreground: 'theme:White', text: đăng nhập}
+    type: Button
+  layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
 is_package: true

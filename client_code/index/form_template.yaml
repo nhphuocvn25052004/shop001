@@ -4,10 +4,10 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
-  - event_bindings: {click: dangnhap_click}
+  - event_bindings: {click: dangxuat_click}
     layout_properties: {}
-    name: dangnhap
-    properties: {role: primary-color, text: đăng nhập}
+    name: dangxuat
+    properties: {foreground: 'theme:White', text: đăng xuất}
     type: Button
   layout_properties: {slot: nav-right}
   name: navbar_links
