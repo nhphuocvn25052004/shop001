@@ -24,5 +24,5 @@ class menu_sp(menu_spTemplate):
     pass
 
   def dangxuat_click(self, **event_args):
-    open_form('admincp.index')
+    open_form('index')
     pass
