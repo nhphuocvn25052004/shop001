@@ -24,5 +24,5 @@ class menu_sp(menu_spTemplate):
     pass
 
   def dangxuat_click(self, **event_args):
-    """This method is called when the button is clicked"""
+    open_form('admincp.index')
     pass
