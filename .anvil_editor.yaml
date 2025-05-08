@@ -15,4 +15,5 @@ unique_ids:
     admincp.menu_qlbh: '1746602787467131873837961.51741'
     admincp.menu_qlsp: '1746602739365589716505797.8936'
   scripts: {}
-  server_modules: {}
+  server_modules:
+    ServerPackage1: '1746720574341387297162295.9988'

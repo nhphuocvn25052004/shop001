@@ -1,5 +1,16 @@
 allow_embedding: false
 db_schema:
+  tbl_danhmuc:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: id_danhmuc
+      type: number
+    - admin_ui: {order: 1, width: 200}
+      name: tendanhmuc
+      type: string
+    server: full
+    title: tbl_danhmuc
   users:
     client: none
     columns:
