@@ -16,4 +16,5 @@ unique_ids:
     admincp.menu_qlsp: '1746602739365589716505797.8936'
   scripts: {}
   server_modules:
-    ServerPackage1: '1746720574341387297162295.9988'
+    sanpham_server: '1746720574341387297162295.9988'
+    sanpham_server.danhmuc_server: '174672224279939116663243.25103'
