@@ -14,10 +14,14 @@ def them_danh_muc(tendanhmuc):
   # Tự tăng ID an toàn
   danh_sach = app_tables.tbl_danhmuc.search()
   id_list = [row['id_danhmuc'] for row in danh_sach if row['id_danhmuc'] is not None]
-
   max_id = max(id_list) if id_list else 0
   new_id = max_id + 1
 
   # Thêm mới
   app_tables.tbl_danhmuc.add_row(id_danhmuc=new_id, tendanhmuc=tendanhmuc)
   return f"Đã thêm danh mục: {tendanhmuc} (ID: {new_id})"
+
+# bảng danh mục
+@anvil.server.callable
+def lay_tat_ca_danh_muc():
+  return app_tables.tbl_danhmuc.search()
