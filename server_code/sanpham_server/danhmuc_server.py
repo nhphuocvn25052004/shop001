@@ -1,10 +1,9 @@
 import anvil.server
 from anvil.tables import app_tables
-import anvil.tables.query as q  # ✅ Thêm dòng này để dùng q.ilike()
+import anvil.tables.query as q
 
 @anvil.server.callable
 def them_danh_muc(tendanhmuc):
-  # Chuẩn hóa chuỗi
   tendanhmuc = tendanhmuc.strip().lower()
 
   # Kiểm tra trùng tên
@@ -12,13 +11,11 @@ def them_danh_muc(tendanhmuc):
   if any(ton_tai):
     return f"Tên danh mục '{tendanhmuc}' đã tồn tại."
 
-  # Tự tăng ID
+  # Tự tăng ID an toàn
   danh_sach = app_tables.tbl_danhmuc.search()
-  if danh_sach:
-    max_id = max(row['id_danhmuc'] for row in danh_sach if row['id_danhmuc'] is not None)
-  else:
-    max_id = 0
+  id_list = [row['id_danhmuc'] for row in danh_sach if row['id_danhmuc'] is not None]
 
+  max_id = max(id_list) if id_list else 0
   new_id = max_id + 1
 
   # Thêm mới
