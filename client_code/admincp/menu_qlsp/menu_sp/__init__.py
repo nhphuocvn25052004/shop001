@@ -10,7 +10,7 @@ class menu_sp(menu_spTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
+  
   def add_sp_click(self, **event_args):
     # Mở popup thêm sản phẩm
     from . import add_sp  # Import module add_sp từ cùng thư mục
