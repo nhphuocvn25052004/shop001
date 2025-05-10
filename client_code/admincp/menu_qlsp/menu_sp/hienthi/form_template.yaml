@@ -4,6 +4,13 @@ components:
     name: image_1
     properties: {height: 124.60000610351562}
     type: Image
+  - layout_properties: {grid_position: 'MYWXAK,OSMROK RJPPBD,IIIHJX'}
+    name: headline_1
+    properties:
+      role: headline
+      text: |
+        giá
+    type: Label
   - layout_properties: {grid_position: 'MYWXAK,OSMROK KIMZSE,IPLZKJ'}
     name: label_ten
     properties: {}
