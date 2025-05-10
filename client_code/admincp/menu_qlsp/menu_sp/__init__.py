@@ -10,7 +10,14 @@ class menu_sp(menu_spTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-  
+
+    # Gọi hàm từ server để lấy danh sách sản phẩm
+    ds_sanpham = anvil.server.call('lay_danh_sach_san_pham')
+    self.rp_sanpham.items = ds_sanpham
+    # Load dữ liệu sản phẩm
+    ds_sanpham = app_tables.tbl_sanpham.search()
+    self.rp_sanpham.items = ds_sanpham
+    
   def add_sp_click(self, **event_args):
     # Mở popup thêm sản phẩm
     from . import add_sp  # Import module add_sp từ cùng thư mục
