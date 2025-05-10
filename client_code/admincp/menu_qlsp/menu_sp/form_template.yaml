@@ -30,7 +30,7 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
-  - layout_properties: {grid_position: 'FEJSRZ,PQOIRL'}
+  - layout_properties: {grid_position: 'CHUOPY,JVPKNA'}
     name: sanpham
     properties: {item_template: admincp.menu_qlsp.menu_sp.hienthi}
     type: RepeatingPanel
