@@ -1,4 +1,4 @@
-from ._anvil_designer import ItemTemplate1Template
+from ._anvil_designer import hienthiTemplate
 from anvil import *
 import anvil.server
 import anvil.tables as tables
@@ -7,7 +7,7 @@ from anvil.tables import app_tables
 import anvil.users
 
 
-class ItemTemplate1(ItemTemplate1Template):
+class hienthi(hienthiTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
