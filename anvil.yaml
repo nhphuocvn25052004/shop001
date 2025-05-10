@@ -1,5 +1,28 @@
 allow_embedding: false
 db_schema:
+  btl_sanpham:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: id_sanpham
+      type: number
+    - admin_ui: {order: 1, width: 200}
+      name: tensanpham
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: giasanpham
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: id_danhmuc
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: tendanhmuc
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: hinhanh
+      type: media
+    server: full
+    title: btl_sanpham
   tbl_danhmuc:
     client: none
     columns:
@@ -54,5 +77,5 @@ services:
 - client_config: {allow_remember_me: true, allow_signup: true, confirm_email: true, enable_automatically: true, remember_me_days: 30, require_secure_passwords: true, use_email: true}
   server_config: {user_table: users}
   source: /runtime/services/anvil/users.yml
-startup: {module: admincp.menu_qlsp.menu_sp, type: form}
+startup: {module: admincp.menu_qlsp.menu_sp.add_sp, type: form}
 startup_form: null

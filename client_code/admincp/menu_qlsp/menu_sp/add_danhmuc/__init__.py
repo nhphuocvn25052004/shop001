@@ -6,8 +6,8 @@ from .delete_danhmuc import delete_danhmuc
 class add_danhmuc(add_danhmucTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
-    self.repeating_panel_1.item_template = delete_danhmuc  # Gán template
-    # ⏬ Lắng nghe sự kiện x-refresh từ mỗi item con để cập nhật danh sách khi xóa
+    self.repeating_panel_1.item_template = lambda **props: delete_danhmuc(parent_form=self, **props)
+    # Lắng nghe sự kiện x-refresh từ mỗi item con để cập nhật danh sách khi xóa
     self.repeating_panel_1.set_event_handler("x-refresh", self.load_data)
     self.load_data()
     
