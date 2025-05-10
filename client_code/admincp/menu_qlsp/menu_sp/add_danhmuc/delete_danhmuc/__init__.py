@@ -15,5 +15,6 @@ class delete_danhmuc(delete_danhmucTemplate):
         Notification("Đã xóa danh mục!", timeout=2).show()
         self.raise_event("x-refresh")  #  Gửi sự kiện để cha tự cập nhật
         self.raise_event("x-close-alert")  #  Đóng popup
+        self.load_data()
       else:
         Notification("Xóa thất bại!", style="danger").show()
