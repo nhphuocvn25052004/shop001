@@ -27,7 +27,7 @@ class add_sp(add_spTemplate):
       self.ten_sanpham.text = ""
       self.gia_sanpham.text = ""
       self.danhsach_danhmuc.selected_value = None
-      self.upload_1.clear()
+      self.file_loader_1.clear()
     except Exception as e:
       alert(f"Lỗi: {e}", title="Lỗi")
 
