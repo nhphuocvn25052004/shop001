@@ -13,7 +13,7 @@ class menu_sp(menu_spTemplate):
 
       # Gọi hàm từ server để lấy danh sách sản phẩm
     ds_sanpham = anvil.server.call('lay_danh_sach_san_pham')
-    self.rp_sanpham.items = ds_sanpham
+    self.sanpham.items = ds_sanpham
    
     
   def add_sp_click(self, **event_args):
