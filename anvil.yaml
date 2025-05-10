@@ -1,28 +1,5 @@
 allow_embedding: false
 db_schema:
-  btl_sanpham:
-    client: none
-    columns:
-    - admin_ui: {order: 0, width: 200}
-      name: id_sanpham
-      type: number
-    - admin_ui: {order: 1, width: 200}
-      name: tensanpham
-      type: string
-    - admin_ui: {order: 2, width: 200}
-      name: giasanpham
-      type: string
-    - admin_ui: {order: 3, width: 200}
-      name: id_danhmuc
-      type: string
-    - admin_ui: {order: 4, width: 200}
-      name: tendanhmuc
-      type: string
-    - admin_ui: {order: 5, width: 200}
-      name: hinhanh
-      type: media
-    server: full
-    title: btl_sanpham
   tbl_danhmuc:
     client: none
     columns:
@@ -34,6 +11,29 @@ db_schema:
       type: string
     server: full
     title: tbl_danhmuc
+  tbl_sanpham:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: id_sanpham
+      type: number
+    - admin_ui: {order: 1, width: 200}
+      name: tensanpham
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: giasanpham
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: tendanhmuc
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: hinhanh
+      type: media
+    - admin_ui: {order: 2.5, width: 200}
+      name: id_danhmuc
+      type: number
+    server: full
+    title: tbl_sanpham
   users:
     client: none
     columns:
