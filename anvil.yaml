@@ -9,6 +9,10 @@ db_schema:
     - admin_ui: {order: 1, width: 200}
       name: tendanhmuc
       type: string
+    - admin_ui: {order: 2, width: 200}
+      name: quanly
+      target: users
+      type: link_single
     server: full
     title: tbl_danhmuc
   tbl_sanpham:
