@@ -21,10 +21,24 @@ class index(indexTemplate):
       self.dangxuat.text = "Đăng nhập"
       self.sanpham.visible = False
       self.banhang.visible = False
-
+      
   def sanpham_click(self, **event_args):
     open_form('admincp.menu_qlsp.menu_sp')  # Mở sang form sản phẩm
 
   def dangxuat_click(self, **event_args):
-    self.logged_in = not self.logged_in  # Đảo trạng thái
+    if self.logged_in:
+    # Đang đăng nhập → thực hiện đăng xuất
+      anvil.users.logout()
+      self.logged_in = False
+      Notification("Đã đăng xuất", timeout=2).show()
+    else:
+    # Đang đăng xuất → mở form đăng nhập
+      try:
+        
+        self.logged_in = True
+        anvil.users.login_with_form()
+        Notification("Đăng nhập thành công!", timeout=2).show()
+      except Exception:
+        alert("Đăng nhập thất bại hoặc bị hủy!")
+
     self.update_ui()
