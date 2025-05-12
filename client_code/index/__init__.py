@@ -26,19 +26,27 @@ class index(indexTemplate):
     open_form('admincp.menu_qlsp.menu_sp')  # Mở sang form sản phẩm
 
   def dangxuat_click(self, **event_args):
-    if self.logged_in:
-    # Đang đăng nhập → thực hiện đăng xuất
-      anvil.users.logout()
-      self.logged_in = False
-      Notification("Đã đăng xuất", timeout=2).show()
-    else:
-    # Đang đăng xuất → mở form đăng nhập
-      try:
-        
-        self.logged_in = True
-        anvil.users.login_with_form()
-        Notification("Đăng nhập thành công!", timeout=2).show()
-      except Exception:
-        alert("Đăng nhập thất bại hoặc bị hủy!")
+    try:
+      if self.logged_in:
+        # Nếu đang đăng nhập → thực hiện đăng xuất
+        anvil.users.logout()
+        self.logged_in = False
+        Notification("Đã đăng xuất", timeout=2).show()
+      else:
+        # cái này dùng không được
+        user = anvil.users.login_with_form() 
+        if user:  
+          # cái này dùng được
+          user = anvil.users.login_with_form()
+          anvil.server.call('cap_nhat_id_khachhang')
+          self.logged_in = True
+          Notification("Đăng nhập thành công!", timeout=2).show()
+        else:
+          alert("Đăng nhập bị hủy!")
+    except Exception as e:
+      alert(f"Đăng nhập thất bại hoặc bị lỗi!\nChi tiết: {e}")
 
-    self.update_ui()
+    self.update_ui()  # Luôn cập nhật giao diện
+
+
+
