@@ -8,21 +8,23 @@ import anvil.server
 
 
 class sua_sp(sua_spTemplate):
-  def __init__(self, **properties):
+  def __init__(self, sanpham=None, **properties):
     self.init_components(**properties)
 
-  def file_loader_1_change(self, file, **event_args):
-    """This method is called when a new file is loaded into this FileLoader"""
-    pass
+    self.sanpham = sanpham  # Gán sản phẩm được truyền vào
 
-  def ten_sanpham_pressed_enter(self, **event_args):
-    """This method is called when the user presses Enter in this text box"""
-    pass
+    if self.sanpham:
+      # Hiển thị dữ liệu lên các trường
+      self.ten_sanpham.text = sanpham['tensanpham']
+      self.gia_sanpham.text = sanpham['giasanpham']
+      self.file_loader_1.url = sanpham['hinhanh'].url if sanpham['hinhanh'] else ""
 
-  def gia_sanpham_pressed_enter(self, **event_args):
-    """This method is called when the user presses Enter in this text box"""
-    pass
+  def chapnhan_click(self, **event_args):
+    self.sanpham['tensanpham'] = self.ten_sanpham.text
+    self.sanpham['giasanpham'] = self.gia_sanpham.text
 
-  def danhsach_danhmuc_change(self, **event_args):
-    """This method is called when an item is selected"""
+    if self.file_loader_1.file:  # Nếu người dùng chọn file mới
+      self.sanpham['hinhanh'] = self.file_loader_1.file
+
+      Notification("Cập nhật thành công!", style="success").show()
     pass

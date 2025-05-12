@@ -25,5 +25,7 @@ class hienthi(hienthiTemplate):
         alert("Xóa thất bại.")
 
   def sua_click(self, **event_args):
-    """This method is called when the button is clicked"""
+    from ..sua_sp import sua_sp
+    popup = sua_sp(sanpham=self.item)
+    alert(popup, title="Sửa sản phẩm", large=True, buttons=[])
     pass
