@@ -1,24 +1,37 @@
 components:
 - components:
-  - layout_properties: {grid_position: 'MYWXAK,GWJNTA'}
-    name: image_1
-    properties: {height: 124.60000610351562}
-    type: Image
-  - layout_properties: {grid_position: 'MYWXAK,OSMROK RJPPBD,IIIHJX'}
-    name: headline_1
-    properties:
-      role: headline
-      text: |
-        giá
-    type: Label
-  - layout_properties: {grid_position: 'MYWXAK,OSMROK KIMZSE,IPLZKJ'}
-    name: label_ten
-    properties: {}
-    type: Label
-  - layout_properties: {grid_position: 'MYWXAK,OSMROK CCPIDV,DMUOQI'}
-    name: label_gia
-    properties: {}
-    type: Label
+  - components:
+    - layout_properties: {grid_position: 'WWNZRH,XTXBUM'}
+      name: image_1
+      properties: {height: 124.60000610351562}
+      type: Image
+    - layout_properties: {grid_position: 'WWNZRH,CQJOOS ZVEOVH,KLQSVB'}
+      name: label_ten
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'WWNZRH,CQJOOS EYJVSX,RAVRVC'}
+      name: label_gia
+      properties: {}
+      type: Label
+    - components:
+      - event_bindings: {click: delete_click}
+        layout_properties: {grid_position: 'TKBGZQ,ABQIOO'}
+        name: delete
+        properties: {icon: 'fa:trash', role: primary-color, text: ''}
+        type: Button
+      - event_bindings: {click: sua_click}
+        layout_properties: {grid_position: 'TKBGZQ,VJIOOY'}
+        name: sua
+        properties: {icon: 'fa:pencil-square', role: primary-color, text: ''}
+        type: Button
+      layout_properties: {grid_position: 'WWNZRH,IVCCLK'}
+      name: column_panel_3
+      properties: {}
+      type: ColumnPanel
+    layout_properties: {grid_position: 'LKGARX,STFGWD'}
+    name: column_panel_2
+    properties: {col_widths: '{"XTXBUM":10,"CQJOOS":10,"IVCCLK":40}'}
+    type: ColumnPanel
   layout_properties: {grid_position: 'SGVUSZ,LZENEA'}
   name: column_panel_1
   properties: {}

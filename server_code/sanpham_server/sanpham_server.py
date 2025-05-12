@@ -18,3 +18,10 @@ def them_san_pham(ten_sp, gia_sp, danh_muc, hinh_anh):
   )
 
   return f"Đã thêm sản phẩm: {ten_sp} (ID: {new_row['id_sanpham']})"
+@anvil.server.callable
+def xoa_san_pham(id_sp):
+  row = app_tables.tbl_sanpham.get(id_sanpham=id_sp)
+  if row:
+    row.delete()
+    return True
+  return False

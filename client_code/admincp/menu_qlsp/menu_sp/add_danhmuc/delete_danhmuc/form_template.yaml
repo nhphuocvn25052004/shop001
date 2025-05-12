@@ -22,11 +22,14 @@ components:
       type: Button
     layout_properties: {grid_position: 'LDRGTT,HPRRAV'}
     name: column_panel_2
-    properties: {}
+    properties:
+      col_widths: '{"THGOGB":15,"ZJCFKT":45}'
+      spacing:
+        padding: [null, null, null, 156]
     type: ColumnPanel
   layout_properties: {grid_position: 'PCUFMD,WZPTTX'}
   name: column_panel_1
-  properties: {}
+  properties: {col_widths: '{"AZMWMS":10,"SHMTDU":10,"HPRRAV":40}'}
   type: ColumnPanel
 container: {type: ColumnPanel}
 is_package: true

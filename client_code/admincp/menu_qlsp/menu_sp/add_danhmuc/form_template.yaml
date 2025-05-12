@@ -24,7 +24,7 @@ components:
       type: Label
     - layout_properties: {grid_position: 'SUKHLK,TYRRHR'}
       name: label_3
-      properties: {text: quản lý}
+      properties: {align: center, text: quản lý}
       type: Label
     - layout_properties: {grid_position: 'DIRZMR,GVFTYI'}
       name: repeating_panel_1
@@ -32,7 +32,7 @@ components:
       type: RepeatingPanel
     layout_properties: {grid_position: 'OEFKLA,LGBBUM'}
     name: column_panel_2
-    properties: {}
+    properties: {col_widths: '{"ATKRSB":10,"TZXLGO":10,"TYRRHR":40}'}
     type: ColumnPanel
   layout_properties: {full_width_row: true, grid_position: 'UKVKQX,GKHLHC'}
   name: column_panel_1

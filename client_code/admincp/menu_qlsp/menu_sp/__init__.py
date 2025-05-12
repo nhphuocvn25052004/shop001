@@ -1,16 +1,16 @@
 from ._anvil_designer import menu_spTemplate
 from anvil import *
 import anvil.server
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
-import anvil.users
+from .hienthi import hienthi  # ✅ import đúng class
 
 class menu_sp(menu_spTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
 
-    # Gọi server để lấy danh sách sản phẩm
+    self.sanpham.item_template = lambda **props: hienthi(parent_form=self, **props)
+    self.load_lai_sanpham()
+
+  def load_lai_sanpham(self):
     ds_sanpham = anvil.server.call('lay_danh_sach_san_pham')
     self.sanpham.items = ds_sanpham
 

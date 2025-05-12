@@ -1,6 +1,7 @@
 from ._anvil_designer import delete_danhmucTemplate
 from anvil import *
 import anvil.server
+from ..sua_danhmuc import sua_danhmuc
 
 class delete_danhmuc(delete_danhmucTemplate):
   def __init__(self, parent_form=None, **properties):
@@ -22,3 +23,14 @@ class delete_danhmuc(delete_danhmucTemplate):
         self.raise_event("x-close-alert")  # Đóng popup
       else:
         Notification("Xóa thất bại!", style="danger").show()
+
+  def sua_click(self, **event_args):
+    if self.item:  # ✅ Kiểm tra trước khi truyền
+      alert(
+      content=sua_danhmuc(item=self.item, parent_form=self.parent_form),
+      large=True,
+      title="Sửa danh mục"
+    )
+    else:
+      alert("Không tìm thấy dữ liệu danh mục để sửa.")
+    pass
