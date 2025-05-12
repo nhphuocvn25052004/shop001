@@ -26,6 +26,5 @@ class hienthi(hienthiTemplate):
 
   def sua_click(self, **event_args):
     from ..sua_sp import sua_sp
-    popup = sua_sp(sanpham=self.item)
+    popup = sua_sp(sanpham=self.item, parent_form=self.parent_form)  # 👈 Truyền form menu_sp
     alert(popup, title="Sửa sản phẩm", large=True, buttons=[])
-    pass

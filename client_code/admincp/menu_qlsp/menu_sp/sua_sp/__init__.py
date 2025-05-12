@@ -3,15 +3,16 @@ from anvil import *
 import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
+
 from anvil.tables import app_tables
 import anvil.server
 
 
 class sua_sp(sua_spTemplate):
-  def __init__(self, sanpham=None, **properties):
+  def __init__(self, sanpham=None, parent_form=None, **properties):
     self.init_components(**properties)
-
-    self.sanpham = sanpham  # Gán sản phẩm được truyền vào
+    self.sanpham = sanpham
+    self.parent_form = parent_form  # 👈 Lưu lại form cha để gọi load lại
 
     if self.sanpham:
       # Hiển thị dữ liệu lên các trường
@@ -20,11 +21,22 @@ class sua_sp(sua_spTemplate):
       self.file_loader_1.url = sanpham['hinhanh'].url if sanpham['hinhanh'] else ""
 
   def chapnhan_click(self, **event_args):
-    self.sanpham['tensanpham'] = self.ten_sanpham.text
-    self.sanpham['giasanpham'] = self.gia_sanpham.text
+          kq = anvil.server.call(
+          'cap_nhat_san_pham',
+          id_sanpham=self.sanpham['id_sanpham'],
+          ten_sp=self.ten_sanpham.text,
+          gia_sp=self.gia_sanpham.text,
+          hinh_anh=self.file_loader_1.file if self.file_loader_1.file else None
+    )
 
-    if self.file_loader_1.file:  # Nếu người dùng chọn file mới
-      self.sanpham['hinhanh'] = self.file_loader_1.file
+          if kq:
+            Notification("Cập nhật thành công!", style="success").show()
 
-      Notification("Cập nhật thành công!", style="success").show()
-    pass
+            # Gọi load lại danh sách nếu có form cha
+          if hasattr(self, 'parent_form') and self.parent_form:
+            self.parent_form.load_lai_sanpham()
+
+              # Đóng cửa sổ alert
+            self.raise_event("x-close-alert")
+          else:
+            Notification("Không tìm thấy sản phẩm để cập nhật!", style="danger").show()

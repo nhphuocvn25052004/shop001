@@ -6,7 +6,7 @@ from .hienthi import hienthi  # ✅ import đúng class
 class menu_sp(menu_spTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
-
+    
     self.sanpham.item_template = lambda **props: hienthi(parent_form=self, **props)
     self.load_lai_sanpham()
 
