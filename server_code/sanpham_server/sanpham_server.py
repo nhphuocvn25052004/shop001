@@ -10,7 +10,6 @@ def lay_danh_sach_san_pham():
   return list(app_tables.tbl_sanpham.search())
 
 @anvil.server.callable
-@anvil.server.callable
 def them_san_pham(ten_sp, gia_sp, danh_muc, hinh_anh):
   san_pham_list = app_tables.tbl_sanpham.search()
   max_id = 0
@@ -44,5 +43,12 @@ def cap_nhat_san_pham(id_sanpham, ten_sp, gia_sp, hinh_anh=None):
     row['giasanpham'] = gia_sp
     if hinh_anh:
       row['hinhanh'] = hinh_anh
+    return True
+  return False
+@anvil.server.callable
+def xoa_san_pham(id_sp):
+  row = app_tables.tbl_sanpham.get(id_sanpham=id_sp)
+  if row:
+    row.delete()
     return True
   return False
