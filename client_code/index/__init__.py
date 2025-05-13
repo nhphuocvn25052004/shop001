@@ -33,20 +33,18 @@ class index(indexTemplate):
         self.logged_in = False
         Notification("Đã đăng xuất", timeout=2).show()
       else:
-        # cái này dùng không được
-        user = anvil.users.login_with_form() 
-        if user:  
-          # cái này dùng được
-          user = anvil.users.login_with_form()
-          anvil.server.call('cap_nhat_id_khachhang')
+      # Đang đăng xuất → mở form đăng nhập
+        user = anvil.users.login_with_form()  # ✅ Gọi đúng 1 lần
+        if user:
+          anvil.server.call('cap_nhat_id_khachhang')  # ✅ Gán ID tại đây
           self.logged_in = True
           Notification("Đăng nhập thành công!", timeout=2).show()
         else:
           alert("Đăng nhập bị hủy!")
+
     except Exception as e:
       alert(f"Đăng nhập thất bại hoặc bị lỗi!\nChi tiết: {e}")
 
-    self.update_ui()  # Luôn cập nhật giao diện
-
+    self.update_ui()  # ✅ Luôn cập nhật lại giao diện
 
 
