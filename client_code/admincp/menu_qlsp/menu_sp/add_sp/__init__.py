@@ -15,7 +15,7 @@ class add_sp(add_spTemplate):
     ten_sp = self.ten_sanpham.text
     gia_sp = self.gia_sanpham.text
     danh_muc = self.danhsach_danhmuc.selected_value
-    hinh_anh = self.file_loader_1.file  # Nếu có ảnh
+    hinh_anh = self.file_loader_1.file
 
     if not ten_sp or not gia_sp or not danh_muc:
       alert("Vui lòng nhập đầy đủ thông tin!", title="Thiếu thông tin")
@@ -30,7 +30,3 @@ class add_sp(add_spTemplate):
       self.file_loader_1.clear()
     except Exception as e:
       alert(f"Lỗi: {e}", title="Lỗi")
-
-  def file_loader_1_change(self, file, **event_args):
-    """This method is called when a new file is loaded into this FileLoader"""
-    pass
