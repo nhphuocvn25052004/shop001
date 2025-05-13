@@ -3,6 +3,7 @@ from anvil import *
 import anvil.server
 from .hienthi import hienthi  # ✅ import đúng class
 
+
 class menu_sp(menu_spTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
