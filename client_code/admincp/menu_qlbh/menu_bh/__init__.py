@@ -1,15 +1,12 @@
 from ._anvil_designer import menu_bhTemplate
 from anvil import *
 import anvil.server
-import anvil.users
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
-
 
 class menu_bh(menu_bhTemplate):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    self.load_sp()
 
-    # Any code you write here will run before the form opens.
+  def load_sp(self):
+    ds_sp = anvil.server.call('lay_sanpham_nguoidung')
+    self.repeating_panel_1.items = ds_sp
