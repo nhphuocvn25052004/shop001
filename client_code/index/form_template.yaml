@@ -19,7 +19,8 @@ components:
     name: sanpham
     properties: {foreground: 'theme:White', text: sản phẩm}
     type: Button
-  - layout_properties: {grid_position: 'PZSFVK,DJXHOX'}
+  - event_bindings: {click: banhang_click}
+    layout_properties: {grid_position: 'PZSFVK,DJXHOX'}
     name: banhang
     properties: {foreground: 'theme:White', text: bán hàng}
     type: Button
