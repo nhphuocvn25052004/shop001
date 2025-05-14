@@ -18,7 +18,11 @@ class menu_sp(menu_spTemplate):
   def add_sp_click(self, **event_args):
     from . import add_sp
     popup = add_sp.add_sp()
-    alert(popup, title="Thêm sản phẩm", large=True, buttons=[])
+    awaitable_alert = alert(popup, title="Thêm sản phẩm", large=True, buttons=[])
+    def after_popup_closed(result):
+      self.load_lai_sanpham()
+    awaitable_alert.then(after_popup_closed)
+
 
   def quanlydanhmuc_sp_click(self, **event_args):
     from . import add_danhmuc
