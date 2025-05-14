@@ -7,7 +7,7 @@ from .hienthi import hienthi  # ✅ import đúng class
 class menu_sp(menu_spTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
-    
+
     self.sanpham.item_template = lambda **props: hienthi(parent_form=self, **props)
     self.load_lai_sanpham()
 
@@ -18,16 +18,15 @@ class menu_sp(menu_spTemplate):
   def add_sp_click(self, **event_args):
     from . import add_sp
     popup = add_sp.add_sp()
-    awaitable_alert = alert(popup, title="Thêm sản phẩm", large=True, buttons=[])
-    def after_popup_closed(result):
-      self.load_lai_sanpham()
-    awaitable_alert.then(after_popup_closed)
-
+    # Sửa: thêm nút đóng để alert trả về giá trị, rồi gọi lại load dữ liệu
+    alert(popup, title="Thêm sản phẩm", large=True, buttons=[("Đóng", True)])
+    self.load_lai_sanpham()
 
   def quanlydanhmuc_sp_click(self, **event_args):
     from . import add_danhmuc
     popup = add_danhmuc.add_danhmuc()
-    alert(popup, title="Thêm danh mục", large=True, buttons=[])
+    alert(popup, title="Thêm danh mục", large=True, buttons=[("Đóng", True)])
+    self.load_lai_sanpham()  # Có thể thêm dòng này nếu bạn muốn load lại sau khi thêm danh mục
 
   def home_click(self, **event_args):
     # Quay về form index với trạng thái đã đăng nhập
