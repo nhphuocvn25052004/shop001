@@ -7,7 +7,8 @@ class menu_bh(menu_bhTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
     self.load_sp()
-
+    self.label_danhmuc.text = getattr(self.item, 'tendanhmuc', 'Không tên')
+    
   def load_sp(self):
     ds_sp = anvil.server.call('lay_sanpham_nguoidung')
     self.flow_panel_sp.clear()

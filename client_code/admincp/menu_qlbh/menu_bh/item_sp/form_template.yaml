@@ -12,8 +12,7 @@ components:
     name: label_gia
     properties: {align: center}
     type: Label
-  data_bindings:
-  - {code: 'self.item[''sanpham_card'']', property: role, writeback: false}
+  data_bindings: []
   layout_properties: {grid_position: 'RUWMXR,IBSGDC'}
   name: column_panel_1
   properties: {}
