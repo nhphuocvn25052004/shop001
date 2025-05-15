@@ -1,17 +1,22 @@
 components:
 - components:
-  - name: image_1
+  - layout_properties: {grid_position: 'AFOCPJ,JDCOCP'}
+    name: image_1
     properties: {}
     type: Image
-  - name: label_tensp
-    properties: {}
+  - layout_properties: {grid_position: 'HVMVQB,UDWVVO'}
+    name: label_tensp
+    properties: {align: center}
     type: Label
-  - name: label_gia
-    properties: {}
+  - layout_properties: {grid_position: 'ITJNEM,NAGKSM'}
+    name: label_gia
+    properties: {align: center}
     type: Label
-  layout_properties: {grid_position: 'IOMDQB,EKWMDI'}
-  name: linear_panel_1
+  data_bindings:
+  - {code: 'self.item[''sanpham_card'']', property: role, writeback: false}
+  layout_properties: {grid_position: 'RUWMXR,IBSGDC'}
+  name: column_panel_1
   properties: {}
-  type: LinearPanel
+  type: ColumnPanel
 container: {type: ColumnPanel}
 is_package: true

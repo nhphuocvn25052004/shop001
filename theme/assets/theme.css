@@ -2,20 +2,17 @@
  This CSS implements the Material Design look and feel for Anvil apps.
  **/
 /* css item_sp */
-.small-item {
-  width: 90px;
-  height: 120px;
-  padding: 8px;
-  margin: 5px;
+.anvil-role-sanpham_card {
   background-color: #f9f9f9;
-  text-align: center;
   border-radius: 10px;
-  transition: 0.2s;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 120px;
 }
-.small-item:hover {
-  background-color: #eaeaea;
-  cursor: pointer;
-}
+
 
 /* Stop panel-cols cutting off drop shadows */
 .anvil-panel-col {
