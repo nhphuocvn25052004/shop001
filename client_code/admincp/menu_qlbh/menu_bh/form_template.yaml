@@ -10,7 +10,7 @@ components:
       name: flow_panel_sp
       properties: {background: 'theme:White'}
       type: FlowPanel
-    layout_properties: {width: 298}
+    layout_properties: {width: 716.989}
     name: column_panel_2
     properties: {}
     type: ColumnPanel
