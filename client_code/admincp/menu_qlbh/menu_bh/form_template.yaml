@@ -5,22 +5,14 @@ components:
   type: ColumnPanel
 - components:
   - components:
-    - layout_properties: {grid_position: 'TVHJZU,UMTXSI'}
-      name: primary_color_1
-      properties: {role: primary-color, text: primary_color_1}
-      type: Button
-    - components:
-      - layout_properties: {expand: false, width: 304.5454406738281}
-        name: repeating_panel_1
-        properties: {item_template: admincp.menu_qlbh.menu_bh.ItemTemplate1}
-        type: RepeatingPanel
-      layout_properties: {grid_position: 'KSOVLU,QGYTUW'}
-      name: flow_panel_2
-      properties: {}
+    - components: []
+      layout_properties: {grid_position: 'VMYVTL,SLJSKI'}
+      name: flow_panel_sp
+      properties: {background: 'theme:White'}
       type: FlowPanel
-    layout_properties: {expand: true, width: 20}
+    layout_properties: {width: 298}
     name: column_panel_2
-    properties: {background: 'theme:White'}
+    properties: {}
     type: ColumnPanel
   - components:
     - layout_properties: {grid_position: 'GPCMHE,PAKDDM'}
@@ -35,5 +27,9 @@ components:
   name: flow_panel_1
   properties: {background: 'theme:Primary 700'}
   type: FlowPanel
+- layout_properties: {grid_position: 'FQMMGL,MVJAAF'}
+  name: primary_color_1
+  properties: {role: primary-color, text: primary_color_1}
+  type: Button
 container: {type: ColumnPanel}
 is_package: true

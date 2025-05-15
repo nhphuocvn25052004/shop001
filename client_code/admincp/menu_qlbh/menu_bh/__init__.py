@@ -1,7 +1,7 @@
 from ._anvil_designer import menu_bhTemplate
 from anvil import *
 import anvil.server
-
+from .item_sp import item_sp
 class menu_bh(menu_bhTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
@@ -9,4 +9,9 @@ class menu_bh(menu_bhTemplate):
 
   def load_sp(self):
     ds_sp = anvil.server.call('lay_sanpham_nguoidung')
-    self.repeating_panel_1.items = ds_sp
+    self.flow_panel_sp.clear()  # Xóa tất cả các component cũ
+
+    for sp in ds_sp:
+      sp_form = item_sp(**sp)  # Gọi form con với dữ liệu từng sản phẩm
+      self.flow_panel_sp.add_component(sp_form)  # Thêm vào FlowPanel
+
