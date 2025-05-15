@@ -12,7 +12,9 @@
   text-align: center;
   width: 120px;
 }
-
+.label_danhmuc {
+  color: white;
+}
 
 /* Stop panel-cols cutting off drop shadows */
 .anvil-panel-col {

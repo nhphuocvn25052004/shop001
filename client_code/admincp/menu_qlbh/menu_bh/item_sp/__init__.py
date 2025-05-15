@@ -6,13 +6,13 @@ class item_sp(item_spTemplate):
     self.init_components(**properties)
     self.column_panel_1.role = "sanpham_card"
     self.item = item
-
-    # Dùng getattr thay cho .get()
+    
     self.label_tensp.text = getattr(self.item, 'tensanpham', 'Không tên')
     self.label_gia.text = f"{getattr(self.item, 'giasanpham', 0):,} VND"
-    self.image_1.source = getattr(self.item, 'hinhanh', '') or 'blank_image.png'
 
-    # Căn chỉnh
+    # Nếu hinhanh rỗng/null thì gán ảnh mặc định
+    self.image_1.source = getattr(self.item, 'hinhanh', '') or 'assets/blank_image.png'
+
     self.image_1.width = "60px"
     self.image_1.height = "60px"
     self.image_1.align = 'center'

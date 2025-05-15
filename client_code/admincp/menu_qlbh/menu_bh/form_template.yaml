@@ -7,11 +7,11 @@ components:
   - components:
     - components:
       - name: label_danhmuc
-        properties: {}
+        properties: {role: headline}
         type: Label
       layout_properties: {grid_position: 'OFAYIG,HZJUVV'}
-      name: flow_panel_2
-      properties: {}
+      name: flow_panel_danhmuc
+      properties: {background: 'theme:White', foreground: 'theme:White'}
       type: FlowPanel
     - components: []
       layout_properties: {grid_position: 'VMYVTL,SLJSKI'}
