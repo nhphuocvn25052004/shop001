@@ -8,17 +8,21 @@ class item_sp(item_spTemplate):
     self.item = item
 
     if self.item:
-      # Truy cập theo kiểu object thay vì .get()
-      tensanpham = self.item.tensanpham if self.item.tensanpham else "Không tên"
-      giasanpham = self.item.giasanpham if self.item.giasanpham else 0 
-      hinhanh = self.item.hinhanh if self.item.hinhanh else 'assets/blank_image.png'
+      # Sử dụng cú pháp [‘field_name’] thay vì .get() hay .tensanpham
+      tensanpham = self.item['tensanpham'] if 'tensanpham' in self.item and self.item['tensanpham'] else "Không tên"
+      giasanpham = self.item['giasanpham'] if 'giasanpham' in self.item and self.item['giasanpham'] else 0
+      hinhanh = self.item['hinhanh'] if 'hinhanh' in self.item and self.item['hinhanh'] else 'assets/blank_image.png'
     else:
       tensanpham = 'Không tên'
       giasanpham = 0
       hinhanh = 'assets/blank_image.png'
 
     self.label_tensp.text = tensanpham
-    self.label_gia.text = f"{int(giasanpham):,} VND"
+    try:
+      self.label_gia.text = f"{int(giasanpham):,} VND"
+    except:
+      self.label_gia.text = "0 VND"
+
     self.image_1.source = hinhanh
 
     self.image_1.width = "60px"
