@@ -32,3 +32,7 @@ class menu_bh(menu_bhTemplate):
     danh_muc = sender.tag
     self.label_danhmuc.text = danh_muc['tendanhmuc']
     self.load_sp(danh_muc)
+@anvil.server.callable
+def debug_in_tat_ca_sanpham():
+  for sp in app_tables.tbl_sanpham.search():
+    print("SP:", sp['tensanpham'], "| KH:", sp['id_khachhang'], "| DM:", sp['id_danhmuc'])
