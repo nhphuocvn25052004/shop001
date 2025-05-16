@@ -30,13 +30,20 @@ class menu_bh(menu_bhTemplate):
       self.flow_panel_danhmuc.add_component(btn)
 
   def load_sp(self, id_danhmuc=None):
-    self.flow_panel_sp.clear()  # Xoá tất cả sản phẩm cũ
+    print(">>> ĐANG TẢI SP, id_danhmuc =", id_danhmuc)
+    self.flow_panel_sp.clear()  # Xóa toàn bộ cũ
+
     ds_sp = anvil.server.call('lay_sanpham_nguoidung', id_danhmuc)
-    # Nếu không có sản phẩm, return mà không thêm gì → trắng hoàn toàn
+
+    print(">>> SỐ LƯỢNG SP:", len(ds_sp))  # Log để chắc chắn
+
     if not ds_sp:
-      return
+      print(">>> KHÔNG CÓ SẢN PHẨM")
+    return  # Không làm gì → trắng
+
     for sp in ds_sp:
       self.flow_panel_sp.add_component(item_sp(item=sp))
+
 
 
 
