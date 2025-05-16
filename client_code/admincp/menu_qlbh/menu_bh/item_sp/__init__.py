@@ -9,9 +9,9 @@ class item_sp(item_spTemplate):
 
     if self.item:
       # Sử dụng cú pháp [‘field_name’] thay vì .get() hay .tensanpham
-      tensanpham = self.item['tensanpham'] if 'tensanpham' in self.item and self.item['tensanpham'] else "Không tên"
-      giasanpham = self.item['giasanpham'] if 'giasanpham' in self.item and self.item['giasanpham'] else 0
-      hinhanh = self.item['hinhanh'] if 'hinhanh' in self.item and self.item['hinhanh'] else 'assets/blank_image.png'
+      tensanpham = self.item['tensanpham'] 
+      giasanpham = self.item['giasanpham'] 
+      hinhanh = self.item['hinhanh']
     else:
       tensanpham = 'Không tên'
       giasanpham = 0

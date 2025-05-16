@@ -24,15 +24,17 @@ class menu_bh(menu_bhTemplate):
   def load_sp(self, id_danhmuc=None):
     self.flow_panel_sp.clear()
     ds_sp = anvil.server.call('lay_sanpham_nguoidung', id_danhmuc)
-
     for sp in ds_sp:
       self.flow_panel_sp.add_component(item_sp(item=sp))
 
+
   def danhmuc_duoc_chon(self, sender, **event_args):
-    danh_muc = sender.tag
+    danh_muc = sender.tag  # đây là ROW từ bảng tbl_danhmuc
     self.label_danhmuc.text = danh_muc['tendanhmuc']
-    self.load_sp(danh_muc)
-@anvil.server.callable
-def debug_in_tat_ca_sanpham():
-  for sp in app_tables.tbl_sanpham.search():
-    print("SP:", sp['tensanpham'], "| KH:", sp['id_khachhang'], "| DM:", sp['id_danhmuc'])
+    self.load_sp(danh_muc)  # Truyền thẳng Row
+
+
+
+  def primary_color_2_click(self, **event_args):
+    anvil.server.call('debug_in_tat_ca_sanpham')
+    pass

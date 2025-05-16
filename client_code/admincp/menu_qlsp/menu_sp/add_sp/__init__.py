@@ -20,7 +20,11 @@ class add_sp(add_spTemplate):
     if not ten_sp or not gia_sp or not danh_muc:
       alert("Vui lòng nhập đầy đủ thông tin!", title="Thiếu thông tin")
       return
-
+    try:
+      gia_sp = float(gia_sp)  # CHUYỂN ĐỔI Ở ĐÂY
+    except ValueError:
+      alert("Giá sản phẩm phải là số!", title="Sai định dạng")
+      return
     try:
       kq = anvil.server.call('them_san_pham', ten_sp, gia_sp, danh_muc, hinh_anh)
       alert(kq, title="Thành công")
