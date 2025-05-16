@@ -13,6 +13,7 @@ def lay_danhmuc_nguoidung():
 @anvil.server.callable
 def lay_sanpham_nguoidung(id_danhmuc=None):
   user = anvil.users.get_user()
+  print("User:", user)  # Thêm dòng này để debug
   if not user:
     return []
 

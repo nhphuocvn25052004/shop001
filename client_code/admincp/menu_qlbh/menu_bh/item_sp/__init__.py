@@ -6,12 +6,20 @@ class item_sp(item_spTemplate):
     self.init_components(**properties)
     self.column_panel_1.role = "sanpham_card"
     self.item = item
-    
-    self.label_tensp.text = getattr(self.item, 'tensanpham', 'Không tên')
-    self.label_gia.text = f"{getattr(self.item, 'giasanpham', 0):,} VND"
 
-    # Nếu hinhanh rỗng/null thì gán ảnh mặc định
-    self.image_1.source = getattr(self.item, 'hinhanh', '') or 'assets/blank_image.png'
+    if self.item:
+      # Truy cập theo kiểu object thay vì .get()
+      tensanpham = self.item.tensanpham if self.item.tensanpham else "Không tên"
+      giasanpham = self.item.giasanpham if self.item.giasanpham else 0 
+      hinhanh = self.item.hinhanh if self.item.hinhanh else 'assets/blank_image.png'
+    else:
+      tensanpham = 'Không tên'
+      giasanpham = 0
+      hinhanh = 'assets/blank_image.png'
+
+    self.label_tensp.text = tensanpham
+    self.label_gia.text = f"{int(giasanpham):,} VND"
+    self.image_1.source = hinhanh
 
     self.image_1.width = "60px"
     self.image_1.height = "60px"
