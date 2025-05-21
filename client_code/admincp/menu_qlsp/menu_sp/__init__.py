@@ -26,7 +26,7 @@ class menu_sp(menu_spTemplate):
     from . import add_danhmuc
     popup = add_danhmuc.add_danhmuc()
     alert(popup, title="Thêm danh mục", large=True, buttons=[("Đóng", True)])
-    self.load_lai_sanpham()  # Có thể thêm dòng này nếu bạn muốn load lại sau khi thêm danh mục
+    self.load_lai_sanpham()  #  dòng này nếu bạn muốn load lại sau khi thêm danh mục
 
   def home_click(self, **event_args):
     # Quay về form index với trạng thái đã đăng nhập
