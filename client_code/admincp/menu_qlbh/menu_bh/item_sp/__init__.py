@@ -4,7 +4,7 @@ from anvil import *
 class item_sp(item_spTemplate):
   def __init__(self, item=None, **properties):
     self.init_components(**properties)
-    self.column_item_sp.role = "sanpham_card"
+    self.link_item_sp.role = "sanpham_card"
     self.item = item
     
     
@@ -29,9 +29,4 @@ class item_sp(item_spTemplate):
     self.label_tensp.align = 'center'
     self.label_gia.align = 'center'
 
-    self.column_item_sp.set_event_handler("x-click",self.sp_duoc_click )
-
-  def sp_duoc_click(self, **event_args):
-    # Ví dụ: hiển thị tên sản phẩm
-    alert(f"Bạn đã chọn: {self.item['tensanpham']}", title="Chi tiết")
 
