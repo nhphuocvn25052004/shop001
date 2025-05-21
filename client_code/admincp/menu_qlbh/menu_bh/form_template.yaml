@@ -36,7 +36,7 @@ components:
   - components:
     - components: []
       layout_properties: {grid_position: 'HQUJOL,TNERQW'}
-      name: column_panel_3
+      name: column_thanhtoan
       properties: {background: 'theme:White'}
       type: ColumnPanel
     - event_bindings: {click: primary_color_2_click}

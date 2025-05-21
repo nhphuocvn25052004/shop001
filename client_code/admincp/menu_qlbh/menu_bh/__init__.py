@@ -34,7 +34,9 @@ class menu_bh(menu_bhTemplate):
     ds_sp = anvil.server.call('lay_sanpham_nguoidung', id_danhmuc)
     for sp in ds_sp:
       self.flow_panel_sp.add_component(item_sp(item=sp))
-
+    if not ds_sp:
+      self.flow_panel_sp.add_component(Label(text="Hết sản phẩm", align="center", bold=True, foreground="red"))
+    return
 
 
 
