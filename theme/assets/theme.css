@@ -1,6 +1,40 @@
 /**
  This CSS implements the Material Design look and feel for Anvil apps.
  **/
+/*css item_thanhtoan  */
+.soluong-btn {
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+.soluong-btn:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
+.btn-xoa {
+  background-color: #dc3545;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  padding: 4px 10px;
+  font-weight: bold;
+}
+.btn-xoa:hover {
+  background-color: #a71d2a;
+  cursor: pointer;
+}
+
+.tong-dong {
+  font-weight: bold;
+  color: #28a745;
+}
+
 /* css item_sp */
 .anvil-role-sanpham_card {
   background-color: #f9f9f9;

@@ -28,5 +28,6 @@ class item_sp(item_spTemplate):
     self.image_1.align = 'center'
     self.label_tensp.align = 'center'
     self.label_gia.align = 'center'
+  
 
 
