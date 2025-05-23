@@ -8,8 +8,6 @@ class item_sp(item_spTemplate):
     self.parent_form = parent_form
 
     self.link_item_sp.role = "sanpham_card"
-
-    # Gán sự kiện click
     self.link_item_sp.set_event_handler("click", self.sp_duoc_click)
 
     if self.item:
@@ -35,9 +33,5 @@ class item_sp(item_spTemplate):
     self.label_gia.align = 'center'
 
   def sp_duoc_click(self, **event_args):
-    # Ví dụ đơn giản: hiển thị tên sản phẩm
-    alert(f"Bạn đã chọn: {self.item['tensanpham']}", title="Thông tin sản phẩm")
-
-    # Gọi sang form cha để xử lý thêm nếu cần
     if self.parent_form:
       self.parent_form.them_vao_thanhtoan(self.item)
