@@ -86,3 +86,27 @@ def cap_nhat_tong_tien(self):
     except:
       continue
   self.label_tongtien.text = f"{tong:,} VND"
+
+def them_vao_thanhtoan(self, sp):
+  self.ds_thanhtoan.append(sp)
+  self.hien_thi_lai_thanhtoan()
+
+  def hien_thi_lai_thanhtoan(self):
+    self.column_thanhtoan.clear()
+    for item in self.ds_thanhtoan:
+      self.column_thanhtoan.add_component(
+        item_thanhtoan(item=item, parent_form=self)
+      )
+
+def xoa_khoi_thanhtoan(self, sp):
+  self.ds_thanhtoan = [i for i in self.ds_thanhtoan if i != sp]
+  self.hien_thi_lai_thanhtoan()
+
+  def cap_nhat_tong_tien(self):
+    tong = 0
+    for comp in self.column_thanhtoan.get_components():
+      try:
+        tong += int(comp.item['giasanpham']) * comp.so_luong
+      except:
+        continue
+    self.label_tongtien.text = f"{tong:,} VND"

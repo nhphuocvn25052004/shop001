@@ -2,18 +2,24 @@ from ._anvil_designer import item_spTemplate
 from anvil import *
 
 class item_sp(item_spTemplate):
-  def __init__(self, item=None, **properties):
+  def __init__(self, item=None, parent_form=None, **properties):
     self.init_components(**properties)
-    self.link_item_sp.role = "sanpham_card"
     self.item = item
-    
-    
+    self.parent_form = parent_form
+
+    self.link_item_sp.role = "sanpham_card"
+
+    # Gán sự kiện click
+    self.link_item_sp.set_event_handler("click", self.sp_duoc_click)
+
     if self.item:
-      # Sử dụng cú pháp [‘field_name’] thay vì .get() hay .tensanpham
-      tensanpham = self.item['tensanpham'] 
-      giasanpham = self.item['giasanpham'] 
+      tensanpham = self.item['tensanpham']
+      giasanpham = self.item['giasanpham']
       hinhanh = self.item['hinhanh']
-    
+    else:
+      tensanpham = "Không tên"
+      giasanpham = 0
+      hinhanh = None
 
     self.label_tensp.text = tensanpham
     try:
@@ -22,12 +28,16 @@ class item_sp(item_spTemplate):
       self.label_gia.text = "0 VND"
 
     self.image_1.source = hinhanh
-
     self.image_1.width = "60px"
     self.image_1.height = "60px"
     self.image_1.align = 'center'
     self.label_tensp.align = 'center'
     self.label_gia.align = 'center'
-  
 
+  def sp_duoc_click(self, **event_args):
+    # Ví dụ đơn giản: hiển thị tên sản phẩm
+    alert(f"Bạn đã chọn: {self.item['tensanpham']}", title="Thông tin sản phẩm")
 
+    # Gọi sang form cha để xử lý thêm nếu cần
+    if self.parent_form:
+      self.parent_form.them_vao_thanhtoan(self.item)
