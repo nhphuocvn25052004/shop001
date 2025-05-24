@@ -10,9 +10,9 @@ class menu_bh(menu_bhTemplate):
 
     self.flow_panel_sp.clear()
     self.flow_panel_danhmuc.clear()
-    # self.label_danhmuc.foreground = "white"
-    # self.ds_thanhtoan = []
-    # self.label_tongtien.text = "0 VND"
+    self.label_danhmuc.foreground = "white"
+    self.ds_thanhtoan = []
+    self.label_tongtien.text = "0 VND"
 
     self.load_danhmuc()
     self.load_sp()  # Mặc định load tất cả sản phẩm
