@@ -58,6 +58,7 @@ class menu_bh(menu_bhTemplate):
   def them_vao_thanhtoan(self, sp):
     self.ds_thanhtoan.append(sp)
     self.hien_thi_lai_thanhtoan()
+    self.cap_nhat_tong_tien()  # Cập nhật tổng tiền sau khi thêm sản phẩm
 
   def hien_thi_lai_thanhtoan(self):
     self.column_thanhtoan.clear()

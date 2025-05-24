@@ -47,3 +47,5 @@ class item_thanhtoan(item_thanhtoanTemplate):
   def btn_xoa_click(self, **event_args):
     if self.parent_form:
       self.parent_form.xoa_khoi_thanhtoan(self.item)
+      self.remove_from_parent()  # Loại bỏ mục khỏi giao diện
+      self.parent_form.cap_nhat_tong_tien()  # Cập nhật tổng tiền sau khi xóa
