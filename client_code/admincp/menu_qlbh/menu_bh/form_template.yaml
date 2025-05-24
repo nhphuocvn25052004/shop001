@@ -39,9 +39,13 @@ components:
       name: column_thanhtoan
       properties: {background: 'theme:White'}
       type: ColumnPanel
+    - layout_properties: {grid_position: 'HLJNWI,WWLGSH'}
+      name: headline_1
+      properties: {bold: true, role: headline, text: Tổng tiền}
+      type: Label
     - layout_properties: {grid_position: 'HLJNWI,CVJCZX'}
       name: label_tongtien
-      properties: {}
+      properties: {align: right}
       type: Label
     - event_bindings: {click: primary_color_2_click}
       layout_properties: {grid_position: 'PPINDG,VNOKSK'}
@@ -50,7 +54,7 @@ components:
       type: Button
     layout_properties: {expand: true, width: 112.8068525390625}
     name: column_panel_4
-    properties: {}
+    properties: {background: 'theme:White'}
     type: ColumnPanel
   layout_properties: {full_width_row: true, grid_position: 'NQZMNS,KZRADU'}
   name: flow_panel_1

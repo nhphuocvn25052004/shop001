@@ -27,6 +27,7 @@ components:
     properties: {}
     type: Label
   - data_bindings: []
+    event_bindings: {click: btn_xoa_click}
     layout_properties: {grid_position: 'KDADTD,LNJQKK'}
     name: btn_xoa
     properties: {icon: 'fa:trash', role: primary-color, text: ''}
