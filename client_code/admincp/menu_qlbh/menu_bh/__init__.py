@@ -56,9 +56,18 @@ class menu_bh(menu_bhTemplate):
     open_form('index', logged_in=False)
 
   def them_vao_thanhtoan(self, sp):
+    # Tìm xem sản phẩm đã có chưa
+    for comp in self.column_thanhtoan.get_components():
+      if comp.item == sp:
+        comp.so_luong += 1
+        comp.cap_nhat_hien_thi()
+        return
+
+    # Nếu chưa có → thêm mới
     self.ds_thanhtoan.append(sp)
     self.hien_thi_lai_thanhtoan()
-    self.cap_nhat_tong_tien()  # Cập nhật tổng tiền sau khi thêm sản phẩm
+    self.cap_nhat_tong_tien()
+
 
   def hien_thi_lai_thanhtoan(self):
     self.column_thanhtoan.clear()
@@ -77,3 +86,27 @@ class menu_bh(menu_bhTemplate):
       except:
         continue
     self.label_tongtien.text = f"{tong:,} VND"
+
+  def btn_thanhtoan_click(self, **event_args):
+    danh_sach = []
+    tong_tien = 0
+
+    for comp in self.column_thanhtoan.get_components():
+      if hasattr(comp, "item") and comp.item:
+        ten = comp.item['tensanpham']
+        sl = comp.so_luong
+        gia = int(comp.item['giasanpham'])
+        tong = gia * sl
+        tong_tien += tong
+        danh_sach.append(f"{ten} x{sl} = {tong:,} VND")
+
+    if not danh_sach:
+      alert("Chưa có món nào được chọn.", title="Thông báo")
+    return
+
+    noi_dung = "\n".join(danh_sach)
+    noi_dung += f"\n\nTỔNG: {tong_tien:,} VND"
+
+    alert(noi_dung, title="Hóa đơn")
+
+  

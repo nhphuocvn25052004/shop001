@@ -47,10 +47,10 @@ components:
       name: label_tongtien
       properties: {align: right}
       type: Label
-    - event_bindings: {click: primary_color_2_click}
+    - event_bindings: {click: btn_thanhtoan_click}
       layout_properties: {grid_position: 'PPINDG,VNOKSK'}
-      name: primary_color_2
-      properties: {role: primary-color, text: primary_color_2}
+      name: btn_thanhtoan
+      properties: {role: primary-color, text: thanh toán}
       type: Button
     layout_properties: {expand: true, width: 112.8068525390625}
     name: column_panel_4
