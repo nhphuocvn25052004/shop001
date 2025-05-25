@@ -15,23 +15,15 @@ def lay_danhmuc_nguoidung():
 def lay_sanpham_nguoidung(id_danhmuc=None):
   user = anvil.users.get_user()
   if not user:
-    print(">>> Không có user")
     return []
 
   if id_danhmuc:
-    print(">>> LỌC THEO DANH MỤC:", id_danhmuc)
-    ds = list(app_tables.tbl_sanpham.search(
+    return list(app_tables.tbl_sanpham.search(
       id_khachhang=user,
       id_danhmuc=id_danhmuc
     ))
-    print(">>> SỐ SP TÌM ĐƯỢC:", len(ds))
-    return ds
 
-  ds = list(app_tables.tbl_sanpham.search(id_khachhang=user))
-  print(">>> LẤY TOÀN BỘ SP:", len(ds))
-  return ds
-
-
+  return list(app_tables.tbl_sanpham.search(id_khachhang=user))
 
 # Thêm sản phẩm mới
 @anvil.server.callable

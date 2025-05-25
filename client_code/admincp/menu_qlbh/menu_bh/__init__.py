@@ -102,11 +102,18 @@ class menu_bh(menu_bhTemplate):
 
     if not danh_sach:
       alert("Chưa có món nào được chọn.", title="Thông báo")
-    return
+      return
 
     noi_dung = "\n".join(danh_sach)
     noi_dung += f"\n\nTỔNG: {tong_tien:,} VND"
 
+  # ✅ Hiện hóa đơn
     alert(noi_dung, title="Hóa đơn")
+
+  # ✅ Xóa danh sách + cập nhật tổng tiền
+    self.column_thanhtoan.clear()
+    self.ds_thanhtoan.clear()
+    self.label_tongtien.text = "0 VND"
+
 
   
