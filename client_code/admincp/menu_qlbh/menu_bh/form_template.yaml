@@ -34,6 +34,11 @@ components:
     properties: {}
     type: ColumnPanel
   - components:
+    - event_bindings: {tab_click: tabs_thucdon_tab_click}
+      layout_properties: {grid_position: 'SLVVCO,DSNCOR'}
+      name: tabs_thucdon
+      properties: {}
+      type: form:dep_vg3u5hd8hkqibg:Tabs
     - components: []
       layout_properties: {grid_position: 'HQUJOL,TNERQW'}
       name: column_thanhtoan

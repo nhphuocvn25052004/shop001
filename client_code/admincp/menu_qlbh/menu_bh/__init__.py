@@ -115,5 +115,9 @@ class menu_bh(menu_bhTemplate):
     self.ds_thanhtoan.clear()
     self.label_tongtien.text = "0 VND"
 
+  def tabs_thucdon_tab_click(self, tab_index, tab_title, **event_args):
+    """This method is called when a tab is clicked"""
+    pass
+
 
   
