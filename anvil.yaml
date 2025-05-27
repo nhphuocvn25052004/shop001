@@ -72,6 +72,10 @@ db_schema:
       type: number
     server: full
     title: Users
+dependencies:
+- dep_id: dep_vg3u5hd8hkqibg
+  resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
+  version: {version_tag: v3.1.0}
 name: shop001
 package_name: shop001
 runtime_options:
