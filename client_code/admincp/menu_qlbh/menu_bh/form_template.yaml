@@ -39,6 +39,11 @@ components:
       name: tabs_thucdon
       properties: {}
       type: form:dep_vg3u5hd8hkqibg:Tabs
+    - event_bindings: {click: btn_them_don_click}
+      layout_properties: {grid_position: 'SLVVCO,XUQCTL'}
+      name: btn_them_don
+      properties: {background: 'theme:White', foreground: 'theme:Primary 500', icon: 'fa:plus', role: primary-color, text: ''}
+      type: Button
     - components: []
       layout_properties: {grid_position: 'HQUJOL,TNERQW'}
       name: column_thanhtoan
@@ -59,7 +64,7 @@ components:
       type: Button
     layout_properties: {expand: true, width: 112.8068525390625}
     name: column_panel_4
-    properties: {background: 'theme:White'}
+    properties: {background: 'theme:White', col_widths: '{"DSNCOR":54,"XUQCTL":6}'}
     type: ColumnPanel
   layout_properties: {full_width_row: true, grid_position: 'NQZMNS,KZRADU'}
   name: flow_panel_1
