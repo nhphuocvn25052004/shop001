@@ -3,7 +3,7 @@ from anvil import *
 import anvil.server
 from .item_sp import item_sp
 from .item_thanhtoan import item_thanhtoan
-
+import copy
 class menu_bh(menu_bhTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
@@ -12,10 +12,10 @@ class menu_bh(menu_bhTemplate):
     self.flow_panel_danhmuc.clear()
     self.label_danhmuc.foreground = "white"
     self.tabs_thucdon.tab_titles = ["Đơn 1"]
-    self.ds_thanhtoan = [[]]
+    self.ds_thanhtoan = [[]for _ in self.tabs_thucdon.tab_titles]
     self.tabs_thucdon.set_event_handler('tab_click', self.tabs_thucdon_tab_click)
     self.label_tongtien.text = "0 VND"
-    
+
     self.load_danhmuc()
     self.load_sp()  # Mặc định load tất cả sản phẩm
 
@@ -62,39 +62,45 @@ class menu_bh(menu_bhTemplate):
     if index >= len(self.ds_thanhtoan):
       # Nếu index vượt quá phạm vi, thêm các đơn hàng trống cho đến khi đủ
       for _ in range(len(self.ds_thanhtoan), index + 1):
-            self.ds_thanhtoan.append([])
+        self.ds_thanhtoan.append([])
     ds_don = self.ds_thanhtoan[index]
 
     # Kiểm tra xem sản phẩm đã có trong đơn chưa
     for item in ds_don:
-        if item['id'] == sp['id']:
-            item['so_luong'] += 1
-            break
+      if item['id'] == sp['id']:
+        item['so_luong'] += 1
+        break
     else:
-        # Nếu chưa có, thêm sản phẩm mới với số lượng 1
-        sp_moi = sp.copy()
-        sp_moi['so_luong'] = 1
-        ds_don.append(sp_moi)
+      # Nếu chưa có, thêm sản phẩm mới với số lượng 1
+      sp_moi = copy.deepcopy(sp)  # Sử dụng deepcopy để tạo bản sao
+      sp_moi['so_luong'] = 1
+      ds_don.append(sp_moi)
 
     self.hien_thi_lai_thanhtoan()
     self.cap_nhat_tong_tien()
 
 
   def hien_thi_lai_thanhtoan(self):
-    self.column_thanhtoan.clear()
     index = self.tabs_thucdon.active_tab_index
+    while index >= len(self.ds_thanhtoan):
+      self.ds_thanhtoan.append([])
+    self.column_thanhtoan.clear()
     for item in self.ds_thanhtoan[index]:
       self.column_thanhtoan.add_component(item_thanhtoan(item=item, parent_form=self))
 
   def xoa_khoi_thanhtoan(self, sp):
     index = self.tabs_thucdon.active_tab_index
+    while index >= len(self.ds_thanhtoan):
+      self.ds_thanhtoan.append([])
     self.ds_thanhtoan[index] = [i for i in self.ds_thanhtoan[index] if i['id'] != sp['id']]
     self.hien_thi_lai_thanhtoan()
     self.cap_nhat_tong_tien()
 
   def cap_nhat_tong_tien(self):
-    tong = 0
     index = self.tabs_thucdon.active_tab_index
+    while index >= len(self.ds_thanhtoan):
+      self.ds_thanhtoan.append([])
+    tong = 0
     for item in self.ds_thanhtoan[index]:
       try:
         tong += int(item['giasanpham']) * item['so_luong']
@@ -103,6 +109,9 @@ class menu_bh(menu_bhTemplate):
     self.label_tongtien.text = f"{tong:,} VND"
 
   def btn_thanhtoan_click(self, **event_args):
+    index = self.tabs_thucdon.active_tab_index
+    while index >= len(self.ds_thanhtoan):
+      self.ds_thanhtoan.append([])
     danh_sach = []
     tong_tien = 0
     index = self.tabs_thucdon.active_tab_index
@@ -130,17 +139,21 @@ class menu_bh(menu_bhTemplate):
     self.cap_nhat_tong_tien()
 
   def tabs_thucdon_tab_click(self, tab_index, tab_title, **event_args):
+    while tab_index >= len(self.ds_thanhtoan):
+      self.ds_thanhtoan.append([])
+
     self.hien_thi_lai_thanhtoan()
     self.cap_nhat_tong_tien()
+    
 
   def btn_them_don_click(self, **event_args):
-    so_don = len(self.ds_thanhtoan) + 1
+    so_don = len(self.tabs_thucdon.tab_titles) + 1
     self.tabs_thucdon.tab_titles.append(f"Đơn {so_don}")
-    self.ds_thanhtoan.append([])  # Thêm đơn hàng mới (danh sách rỗng)
-    self.tabs_thucdon.active_tab_index = so_don - 1  # Chuyển đến tab mới
+    self.ds_thanhtoan.append([])
+    self.tabs_thucdon.active_tab_index = so_don - 1
     self.hien_thi_lai_thanhtoan()
     self.cap_nhat_tong_tien()
-    pass
 
-
-  
+  def ensure_ds_thanhtoan(self, index):
+    while index >= len(self.ds_thanhtoan):
+      self.ds_thanhtoan.append([])

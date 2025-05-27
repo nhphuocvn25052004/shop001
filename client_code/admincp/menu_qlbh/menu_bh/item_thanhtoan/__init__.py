@@ -4,11 +4,11 @@ from anvil import Timer
 
 class item_thanhtoan(item_thanhtoanTemplate):
   def __init__(self, item=None, parent_form=None, **properties):
-    self.init_components(**properties)
     self.item = item
     self.parent_form = parent_form
-    self.so_luong = 1
-    self.hold_timer = None
+    self.so_luong = item.get('so_luong', 1)
+    self.init_components(**properties)
+    self.cap_nhat_hien_thi()
 
     self.btn_tang.role = "soluong-btn"
     self.btn_giam.role = "soluong-btn"
@@ -24,13 +24,9 @@ class item_thanhtoan(item_thanhtoanTemplate):
     self.cap_nhat_hien_thi()
 
   def cap_nhat_hien_thi(self):
-    if not self.item:
-      return
-    gia = int(self.item['giasanpham'])
-    self.label_sl.text = f"x{self.so_luong}"
-    self.label_tong.text = f"{gia * self.so_luong:,} VND"
-    if self.parent_form:
-      self.parent_form.cap_nhat_tong_tien()
+    self.label_ten.text = self.item['tensanpham']
+    self.label_soluong.text = str(self.so_luong)
+    self.label_gia.text = f"{int(self.item['giasanpham']) * self.so_luong:,} VND"
 
   def tang_sl(self, **event_args):
     self.so_luong += 1
