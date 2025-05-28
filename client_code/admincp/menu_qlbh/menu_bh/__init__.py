@@ -1,7 +1,8 @@
 from ._anvil_designer import menu_bhTemplate
 from anvil import *
 import anvil.server
-from .item_sp import item_sp
+from copy import deepcopy
+from item_sp import item_sp
 from .item_thanhtoan import item_thanhtoan
 from anvil_extras import Chip
 
@@ -165,7 +166,7 @@ class menu_bh(menu_bhTemplate):
         item['so_luong'] += 1
         break
     else:
-      sp_moi = copy.deepcopy(sp)
+      sp_moi = deepcopy(sp)
       sp_moi['so_luong'] = 1
       ds_don.append(sp_moi)
 
