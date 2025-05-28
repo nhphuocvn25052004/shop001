@@ -13,7 +13,9 @@ class menu_bh(menu_bhTemplate):
     self.label_danhmuc.foreground = "white"
     self.ds_thanhtoan = []
     self.label_tongtien.text = "0 VND"
-
+    self.so_don = 1  # Bắt đầu từ đơn 1
+    
+    self.them_hoadon_moi()  # Tạo đơn đầu tiên mặc định
     self.load_danhmuc()
     self.load_sp()  # Mặc định load tất cả sản phẩm
 
@@ -115,13 +117,14 @@ class menu_bh(menu_bhTemplate):
     self.ds_thanhtoan.clear()
     self.label_tongtien.text = "0 VND"
 
-  def tabs_thucdon_tab_click(self, tab_index, tab_title, **event_args):
-    """This method is called when a tab is clicked"""
-    pass
-
+  def them_hoadon_moi(self):
+    ten_don = f"Đơn {self.so_don}"
+    lbl = Label(text=ten_don, bold=True)
+    self.flow_panel_hoadon.add_component(lbl)
+    self.so_don += 1
+    
   def btn_them_don_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    self.them_hoadon_moi()
 
 
 
