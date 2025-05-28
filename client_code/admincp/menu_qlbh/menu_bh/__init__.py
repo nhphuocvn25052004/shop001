@@ -14,8 +14,6 @@ class menu_bh(menu_bhTemplate):
     self.ds_thanhtoan = []
     self.label_tongtien.text = "0 VND"
     self.so_don = 1  # Bắt đầu từ đơn 1
-    self.danh_sach_don = {}   # Lưu trữ đơn theo số: {1: {'ds': [], 'tong': 0}, ...}
-    self.don_hien_tai = 1     # Đơn đang làm việc
 
     self.them_hoadon_moi()  # Tạo đơn đầu tiên mặc định
     self.load_danhmuc()
@@ -75,8 +73,7 @@ class menu_bh(menu_bhTemplate):
 
   def hien_thi_lai_thanhtoan(self):
     self.column_thanhtoan.clear()
-    ds_don = self.danh_sach_don[self.don_hien_tai]['ds']
-    for item in ds_don:
+    for item in self.ds_thanhtoan:
       self.column_thanhtoan.add_component(item_thanhtoan(item=item, parent_form=self))
 
   def xoa_khoi_thanhtoan(self, sp):
@@ -85,55 +82,47 @@ class menu_bh(menu_bhTemplate):
 
   def cap_nhat_tong_tien(self):
     tong = 0
-    ds_don = self.danh_sach_don[self.don_hien_tai]['ds']
-    for sp in ds_don:
+    for comp in self.column_thanhtoan.get_components():
       try:
-        tong += int(sp['giasanpham']) * sp['soluong']
+        tong += int(comp.item['giasanpham']) * comp.so_luong
       except:
         continue
-    self.danh_sach_don[self.don_hien_tai]['tong'] = tong
     self.label_tongtien.text = f"{tong:,} VND"
 
-
   def btn_thanhtoan_click(self, **event_args):
-    ds_don = self.danh_sach_don[self.don_hien_tai]['ds']
-    if not ds_don:
-      alert("Chưa có món nào trong đơn.", title="Thông báo")
-    return
-    tong_tien = 0
     danh_sach = []
-    for sp in ds_don:
-      sl = sp['soluong']
-      gia = int(sp['giasanpham'])
-      tong = gia * sl
-      tong_tien += tong
-      danh_sach.append(f"{sp['tensanpham']} x{sl} = {tong:,} VND")
+    tong_tien = 0
+
+    for comp in self.column_thanhtoan.get_components():
+      if hasattr(comp, "item") and comp.item:
+        ten = comp.item['tensanpham']
+        sl = comp.so_luong
+        gia = int(comp.item['giasanpham'])
+        tong = gia * sl
+        tong_tien += tong
+        danh_sach.append(f"{ten} x{sl} = {tong:,} VND")
+
+    if not danh_sach:
+      alert("Chưa có món nào được chọn.", title="Thông báo")
+      return
+
     noi_dung = "\n".join(danh_sach)
     noi_dung += f"\n\nTỔNG: {tong_tien:,} VND"
-    alert(noi_dung, title=f"Hóa đơn {self.don_hien_tai}")
 
-  # Xóa đơn sau khi thanh toán
-    self.danh_sach_don[self.don_hien_tai] = {'ds': [], 'tong': 0}
-    self.hien_thi_lai_thanhtoan()
-    self.cap_nhat_tong_tien()
+    # ✅ Hiện hóa đơn
+    alert(noi_dung, title="Hóa đơn")
+
+    # ✅ Xóa danh sách + cập nhật tổng tiền
+    self.column_thanhtoan.clear()
+    self.ds_thanhtoan.clear()
+    self.label_tongtien.text = "0 VND"
 
   def them_hoadon_moi(self):
     ten_don = f"Đơn {self.so_don}"
     lbl = Label(text=ten_don, bold=True)
-    lbl.tag = self.so_don
-    lbl.set_event_handler('x-click', self.label_hoadon_duoc_chon)
     self.flow_panel_hoadon.add_component(lbl)
-  # Tạo đơn mới trong danh sách
-    self.danh_sach_don[self.so_don] = {
-      'ds': [],
-      'tong': 0
-    }
     self.so_don += 1
 
-  def label_hoadon_duoc_chon(self, sender, **event_args):
-    self.don_hien_tai = sender.tag
-    self.hien_thi_lai_thanhtoan()
-  
   def btn_them_don_click(self, **event_args):
     self.them_hoadon_moi()
 
