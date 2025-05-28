@@ -157,3 +157,7 @@ class menu_bh(menu_bhTemplate):
   def ensure_ds_thanhtoan(self, index):
     while index >= len(self.ds_thanhtoan):
       self.ds_thanhtoan.append([])
+
+  def chip_thucdon_close_click(self, **event_args):
+    """This method is called when the close link is clicked"""
+    pass
