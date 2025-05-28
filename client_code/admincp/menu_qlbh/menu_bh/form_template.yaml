@@ -35,20 +35,17 @@ components:
     type: ColumnPanel
   - components:
     - components:
-      - event_bindings: {close_click: chip_thucdon_close_click}
-        layout_properties: {grid_position: 'KMFVCU,ANDCSJ'}
-        name: chip_thucdon
-        properties: {}
-        type: form:dep_vg3u5hd8hkqibg:Chip
+      - name: label_hoadon
+        properties: {role: headline}
+        type: Label
       - event_bindings: {click: btn_them_don_click}
-        layout_properties: {grid_position: 'KMFVCU,KDKQML'}
         name: btn_them_don
         properties: {background: 'theme:White', foreground: 'theme:Primary 500', icon: 'fa:plus', role: primary-color, text: ''}
         type: Button
-      layout_properties: {grid_position: 'GSTVTH,UNTTYI'}
-      name: column_donhang
-      properties: {col_widths: '{"ANDCSJ":55,"KDKQML":5}'}
-      type: ColumnPanel
+      layout_properties: {grid_position: 'AZOQMY,UKTYFZ'}
+      name: flow_panel_hoadon
+      properties: {}
+      type: FlowPanel
     - components: []
       layout_properties: {grid_position: 'HQUJOL,TNERQW'}
       name: column_thanhtoan

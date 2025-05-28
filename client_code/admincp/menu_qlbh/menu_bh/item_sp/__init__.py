@@ -35,5 +35,3 @@ class item_sp(item_spTemplate):
   def sp_duoc_click(self, **event_args):
     if self.parent_form:
       self.parent_form.them_vao_thanhtoan(self.item)
-
-
