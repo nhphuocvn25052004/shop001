@@ -3,6 +3,7 @@ from anvil import *
 import anvil.server
 from .item_sp import item_sp
 from .item_thanhtoan import item_thanhtoan
+from anvil_extras import Chip
 
 class menu_bh(menu_bhTemplate):
   def __init__(self, **properties):
@@ -12,6 +13,8 @@ class menu_bh(menu_bhTemplate):
     self.flow_panel_danhmuc.clear()
     self.label_danhmuc.foreground = "white"
     self.ds_thanhtoan = []
+    self.don_hien_tai = 0  # Chỉ số của đơn hàng hiện tại
+    self.them_don_hang()   # Tạo đơn hàng đầu tiên
     self.label_tongtien.text = "0 VND"
 
     self.load_danhmuc()
@@ -118,3 +121,54 @@ class menu_bh(menu_bhTemplate):
   def chip_thucdon_close_click(self, **event_args):
     """This method is called when the close link is clicked"""
     pass
+
+  def them_don_hang(self):
+    ten_don = f"Đơn {len(self.ds_thanhtoan) + 1}"
+    self.ds_thanhtoan.append([])  # Thêm danh sách sản phẩm rỗng cho đơn hàng mới
+
+    chip = Chip(text=ten_don, close_icon=True)
+    chip.set_event_handler('click', self.chon_don_hang)
+    chip.set_event_handler('close_click', self.xoa_don_hang)
+    self.flow_panel_donhang.add_component(chip)
+
+    self.don_hien_tai = len(self.ds_thanhtoan) - 1
+    self.cap_nhat_giao_dien()
+
+  def chon_don_hang(self, sender, **event_args):
+    index = self.flow_panel_donhang.get_components().index(sender)
+    self.don_hien_tai = index
+    self.cap_nhat_giao_dien()
+
+  def xoa_don_hang(self, sender, **event_args):
+    index = self.flow_panel_donhang.get_components().index(sender)
+    self.ds_thanhtoan.pop(index)
+    self.flow_panel_donhang.remove_component(sender)
+
+    # Cập nhật chỉ số đơn hàng hiện tại
+    if self.don_hien_tai >= len(self.ds_thanhtoan):
+      self.don_hien_tai = len(self.ds_thanhtoan) - 1
+    self.cap_nhat_giao_dien()
+
+  def cap_nhat_giao_dien(self):
+    # Xóa và hiển thị lại danh sách sản phẩm trong đơn hàng hiện tại
+    self.column_thanhtoan.clear()
+    for item in self.ds_thanhtoan[self.don_hien_tai]:
+      self.column_thanhtoan.add_component(item_thanhtoan(item=item, parent_form=self))
+    self.cap_nhat_tong_tien()
+
+  def them_vao_thanhtoan(self, sp):
+    ds_don = self.ds_thanhtoan[self.don_hien_tai]
+
+    # Kiểm tra xem sản phẩm đã có trong đơn chưa
+    for item in ds_don:
+      if item['id'] == sp['id']:
+        item['so_luong'] += 1
+        break
+    else:
+      sp_moi = copy.deepcopy(sp)
+      sp_moi['so_luong'] = 1
+      ds_don.append(sp_moi)
+
+    self.cap_nhat_giao_dien()
+
+  
