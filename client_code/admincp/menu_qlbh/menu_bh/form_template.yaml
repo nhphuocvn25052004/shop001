@@ -34,11 +34,11 @@ components:
     properties: {}
     type: ColumnPanel
   - components:
-    - event_bindings: {tab_click: tabs_thucdon_tab_click}
-      layout_properties: {grid_position: 'SLVVCO,DSNCOR'}
-      name: tabs_thucdon
+    - event_bindings: {close_click: chip_thucdon_close_click}
+      layout_properties: {grid_position: 'SLVVCO,YBVZYM'}
+      name: chip_thucdon
       properties: {}
-      type: form:dep_vg3u5hd8hkqibg:Tabs
+      type: form:dep_vg3u5hd8hkqibg:Chip
     - event_bindings: {click: btn_them_don_click}
       layout_properties: {grid_position: 'SLVVCO,XUQCTL'}
       name: btn_them_don
@@ -64,16 +64,11 @@ components:
       type: Button
     layout_properties: {expand: true, width: 112.8068525390625}
     name: column_panel_4
-    properties: {background: 'theme:White', col_widths: '{"DSNCOR":54,"XUQCTL":6}'}
+    properties: {background: 'theme:White', col_widths: '{"XUQCTL":6}'}
     type: ColumnPanel
   layout_properties: {full_width_row: true, grid_position: 'NQZMNS,KZRADU'}
   name: flow_panel_1
   properties: {background: 'theme:Primary 700'}
   type: FlowPanel
-- event_bindings: {close_click: chip_thucdon_close_click}
-  layout_properties: {grid_position: 'UPZYSQ,VFJQCY'}
-  name: chip_thucdon
-  properties: {}
-  type: form:dep_vg3u5hd8hkqibg:Chip
 container: {type: ColumnPanel}
 is_package: true
