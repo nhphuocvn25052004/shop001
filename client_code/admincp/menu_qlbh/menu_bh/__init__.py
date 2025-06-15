@@ -18,7 +18,7 @@ class menu_bh(menu_bhTemplate):
     self.them_hoadon_moi()  # Tạo đơn đầu tiên mặc định
     self.load_danhmuc()
     self.load_sp()  # Mặc định load tất cả sản phẩm
-
+    
   def load_danhmuc(self):
     self.flow_panel_danhmuc.clear()
 

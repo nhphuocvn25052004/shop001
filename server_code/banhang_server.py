@@ -40,3 +40,20 @@ def them_san_pham(ten_sp, gia_sp, danh_muc, hinh_anh):
     id_khachhang=user
   )
   return "Thêm sản phẩm thành công!"
+
+@anvil.server.callable
+def tao_don_hang_moi(ten_donhang):
+  return app_tables.tbl_donhang.add_row(
+    ten_donhang=ten_donhang,
+    ngaytao=datetime.now(),
+    trangthai=False
+  )
+
+@anvil.server.callable
+def cap_nhat_trang_thai_don(id_donhang):
+  row = app_tables.tbl_donhang.get(id=id_donhang)
+  if row:
+    row['trangthai'] = True
+    row.update()
+    return "OK"
+  return "Đơn không tồn tại"
