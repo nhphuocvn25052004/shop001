@@ -35,8 +35,9 @@ components:
     type: ColumnPanel
   - components:
     - components:
-      - name: label_hoadon
-        properties: {role: headline}
+      - layout_properties: {}
+        name: label_hoadon
+        properties: {role: headline, visible: true}
         type: Label
       - event_bindings: {click: btn_them_don_click}
         name: btn_them_don
