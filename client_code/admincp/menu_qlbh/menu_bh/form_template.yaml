@@ -45,7 +45,7 @@ components:
         type: Button
       layout_properties: {grid_position: 'AZOQMY,UKTYFZ'}
       name: flow_panel_hoadon
-      properties: {}
+      properties: {visible: false}
       type: FlowPanel
     - components: []
       layout_properties: {grid_position: 'HQUJOL,TNERQW'}
