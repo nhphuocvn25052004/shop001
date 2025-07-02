@@ -21,11 +21,13 @@ class sua_sp(sua_spTemplate):
       self.file_loader_1.url = sanpham['hinhanh'].url if sanpham['hinhanh'] else ""
 
   def chapnhan_click(self, **event_args):
+        try:
+          gia_sp_number = float(self.gia_sanpham.text)
           kq = anvil.server.call(
           'cap_nhat_san_pham',
           id_sanpham=self.sanpham['id_sanpham'],
           ten_sp=self.ten_sanpham.text,
-          gia_sp=self.gia_sanpham.text,
+          gia_sp=gia_sp_number,
           hinh_anh=self.file_loader_1.file if self.file_loader_1.file else None
     )
 
