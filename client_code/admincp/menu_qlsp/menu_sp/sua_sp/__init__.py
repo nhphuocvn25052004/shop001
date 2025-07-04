@@ -21,26 +21,28 @@ class sua_sp(sua_spTemplate):
       self.file_loader_1.url = sanpham['hinhanh'].url if sanpham['hinhanh'] else ""
 
   def chapnhan_click(self, **event_args):
-    if not self.sanpham:
-     Notification("Không tìm thấy sản phẩm để cập nhật!", style="danger").show()
-     return
+    try:
+      gia_sp_number= float(self.gia_sanpham.text)
+    except:
+      Notification("Giá sản phẩm không hợp lệ!", style="danger").show()
+      return
+    kq = anvil.server.call(
+      'cap_nhat_san_pham',
+      id_sanpham=self.sanpham['id_sanpham'],
+      ten_sp=self.ten_sanpham.text,
+      gia_sp= gia_sp_number,
+      hinh_anh=self.file_loader_1.file if self.file_loader_1.file else None
+    )
 
-     try:
-      gia_sp_number = float(self.gia_sanpham.text)
-      kq = anvil.server.call(
-        'cap_nhat_san_pham',
-        id_sanpham=self.sanpham['id_sanpham'],
-        ten_sp=self.ten_sanpham.text,
-        gia_sp=gia_sp_number,
-        hinh_anh=self.file_loader_1.file if self.file_loader_1.file else None
-     )
+    if kq:
+      Notification("Cập nhật thành công!", style="success").show()
 
-      if kq:
-       Notification("Cập nhật thành công!", style="success").show()
-       if hasattr(self, 'parent_form') and self.parent_form:
-          self.parent_form.load_lai_sanpham()
-       self.raise_event("x-close-alert")
+      # Gọi load lại danh sách nếu có form cha
+    if hasattr(self, 'parent_form') and self.parent_form:
+      self.parent_form.load_lai_sanpham()
 
-     except Exception as e:
-      Notification(f"Lỗi: {e}", style="danger").show()
+      # Đóng cửa sổ alert
+      self.raise_event("x-close-alert")
+    else:
+      Notification("Không tìm thấy sản phẩm để cập nhật!", style="danger").show()
 
