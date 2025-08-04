@@ -1,5 +1,6 @@
 from ._anvil_designer import item_thanhtoanTemplate
 from anvil import *
+import anvil.server
 from anvil import Timer
 
 class item_thanhtoan(item_thanhtoanTemplate):
