@@ -7,7 +7,7 @@ from .item_thanhtoan import item_thanhtoan
 class menu_bh(menu_bhTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
-
+    
     self.flow_panel_sp.clear()
     self.flow_panel_danhmuc.clear()
     self.label_danhmuc.foreground = "white"
@@ -100,7 +100,12 @@ class menu_bh(menu_bhTemplate):
         gia = int(comp.item['giasanpham'])
         tong = gia * sl
         tong_tien += tong
-        danh_sach.append(f"{ten} x{sl} = {tong:,} VND")
+
+        ghi_chu = comp.note.text if hasattr(comp, "note") else ""
+        dong = f"{ten} x{sl} = {tong:,} VND"
+        if ghi_chu:
+          dong += f" (Ghi chú: {ghi_chu})"
+        danh_sach.append(dong)
 
     if not danh_sach:
       alert("Chưa có món nào được chọn.", title="Thông báo")
@@ -117,6 +122,7 @@ class menu_bh(menu_bhTemplate):
     self.ds_thanhtoan.clear()
     self.label_tongtien.text = "0 VND"
 
+
   def them_hoadon_moi(self):
     ten_don = f"Đơn {self.so_don}"
     lbl = Label(text=ten_don, bold=True)
@@ -125,6 +131,12 @@ class menu_bh(menu_bhTemplate):
 
   def btn_them_don_click(self, **event_args):
     self.them_hoadon_moi()
+
+  def input_click(self, **event_args):
+    """Khi nhấn nút, gọi server tải file và gửi về"""
+    media_file = anvil.server.call('tai_file_google_sheets')
+    anvil.media.download(media_file)
+
 
 
 

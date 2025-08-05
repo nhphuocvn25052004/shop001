@@ -5,6 +5,14 @@ components:
     name: home
     properties: {foreground: 'theme:White', icon: 'fa:home', text: ''}
     type: Button
+  - event_bindings: {click: input_click}
+    layout_properties: {grid_position: 'MLASOC,UHEHTI'}
+    name: input
+    properties:
+      foreground: theme:White
+      text: |
+        xuất thông tin
+    type: Button
   - event_bindings: {click: dangxuat_click}
     layout_properties: {grid_position: 'MLASOC,KZRIMX'}
     name: dangxuat

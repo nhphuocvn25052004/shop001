@@ -48,7 +48,9 @@ class index(indexTemplate):
     self.update_ui()  # ✅ Luôn cập nhật lại giao diện
 
   def banhang_click(self, **event_args):
+    
     open_form('admincp.menu_qlbh.menu_bh')
     pass
 
+  
 

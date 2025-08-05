@@ -93,6 +93,6 @@ services:
 - client_config: {}
   server_config: {file_table: files}
   source: /runtime/services/anvil/files.yml
-startup: {module: index, type: form}
+startup: {module: admincp.menu_qlbh.menu_bh, type: form}
 startup_form: null
 uplink_visible: true
