@@ -133,10 +133,10 @@ class menu_bh(menu_bhTemplate):
     self.them_hoadon_moi()
 
   def input_click(self, **event_args):
-    url = "https://docs.google.com/spreadsheets/d/1GBbFYkL726AoNlju-kfIc5aRcVBNF8AF/export?format=csv"
+    url = "https://docs.google.com/spreadsheets/d/1GBbFYkL726AoNlju-kfIc5aRcVBNF8AF/export?format=xlsx"
     link = anvil.js.window.document.createElement("a")
     link.href = url
-    link.download = "du_lieu.csv"  # tên file lưu về
+    link.download = "du_lieu.xlsx"  # tên file lưu về
     link.click()
 
 
