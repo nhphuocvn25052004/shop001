@@ -4,6 +4,7 @@ import anvil.server
 import anvil.users
 from anvil.tables import app_tables
 import requests
+from anvil import Media
 
 # Lấy danh mục của người dùng
 @anvil.server.callable
@@ -61,13 +62,3 @@ def cap_nhat_trang_thai_don(id_donhang):
     return "OK"
   return "Đơn không tồn tại"
 
-@anvil.server.callable
-def tai_file_google_sheets():
-  url = "https://docs.google.com/spreadsheets/d/1GBbFYkL726AoNlju-kfIc5aRcVBNF8AF/export?format=csv"
-  response = requests.get(url)
-
-  if response.status_code == 200:
-    # Tạo Media Object để trả về client
-    return anvil.media.from_bytes(response.content, "sheet.csv")
-  else:
-    raise Exception("Tải file thất bại. Mã lỗi: " + str(response.status_code))

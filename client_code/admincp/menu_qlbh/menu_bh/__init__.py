@@ -133,9 +133,11 @@ class menu_bh(menu_bhTemplate):
     self.them_hoadon_moi()
 
   def input_click(self, **event_args):
-    """Khi nhấn nút, gọi server tải file và gửi về"""
-    media_file = anvil.server.call('tai_file_google_sheets')
-    anvil.media.download(media_file)
+    url = "https://docs.google.com/spreadsheets/d/1GBbFYkL726AoNlju-kfIc5aRcVBNF8AF/export?format=csv"
+    link = anvil.js.window.document.createElement("a")
+    link.href = url
+    link.download = "du_lieu.csv"  # tên file lưu về
+    link.click()
 
 
 
