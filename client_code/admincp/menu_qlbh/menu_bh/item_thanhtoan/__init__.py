@@ -50,3 +50,7 @@ class item_thanhtoan(item_thanhtoanTemplate):
       self.parent_form.xoa_khoi_thanhtoan(self.item)
       self.remove_from_parent()  # Loại bỏ mục khỏi giao diện
       self.parent_form.cap_nhat_tong_tien()  # Cập nhật tổng tiền sau khi xóa
+
+  def note_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    pass

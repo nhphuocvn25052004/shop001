@@ -20,7 +20,7 @@ components:
     type: Button
   layout_properties: {full_width_row: true, grid_position: 'LLRIWK,ECVKBX'}
   name: column_panel_1
-  properties: {background: 'theme:Primary 500'}
+  properties: {background: '#2196F3'}
   type: ColumnPanel
 - components:
   - components:
