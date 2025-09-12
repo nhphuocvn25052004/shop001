@@ -79,7 +79,7 @@ components:
     type: ColumnPanel
   layout_properties: {full_width_row: true, grid_position: 'NQZMNS,KZRADU'}
   name: flow_panel_1
-  properties: {background: 'theme:Primary 700'}
+  properties: {background: '#1976D2'}
   type: FlowPanel
 container: {type: ColumnPanel}
 is_package: true
