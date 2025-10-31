@@ -23,7 +23,31 @@ class index(indexTemplate):
       self.banhang.visible = False
       
   def sanpham_click(self, **event_args):
-    open_form('admincp.menu_qlsp.menu_sp')  # Mở sang form sản phẩm
+      try:
+        # Bắt buộc đăng nhập lại dù đang đăng nhập
+        anvil.users.logout()  # thoát phiên hiện tại
+
+        user = anvil.users.login_with_form(allow_cancel=True)
+        if user:
+          # Nếu bạn cần gán lại ID KH sau khi login
+          anvil.server.call('cap_nhat_id_khachhang')
+
+          self.logged_in = True
+          self.update_ui()
+
+          # Đăng nhập lại OK -> mở trang Sản phẩm
+          open_form('admincp.menu_qlsp.menu_sp')
+        else:
+          # Người dùng bấm Cancel
+          Notification("Bạn đã hủy đăng nhập.", timeout=2).show()
+          self.logged_in = False
+          self.update_ui()
+
+      except Exception as e:
+        alert(f"Lỗi khi yêu cầu đăng nhập lại:\n{e}")
+        self.logged_in = False
+        self.update_ui()
+
 
   def dangxuat_click(self, **event_args):
     try:
